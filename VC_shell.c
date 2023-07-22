@@ -9,8 +9,8 @@
 
 /* Function Prototype */
 void showShellPrompt(void);
-void runShellinstruction(const char *instruction);
 
+void runShellinstruction(const char *instruction)
 {
 	pid_t pid = fork(); /* creating a new child process using fork */
 
@@ -41,47 +41,4 @@ void runShellinstruction(const char *instruction);
 			fprintf(stderr, "Error occurred while running code: %s\n", instruction);
 		}
 	}
-}
-
-/**
- * main - Entry point of the program
- * @argc: Number of command-line arguments in the code
- * @argv: Array of command-line argument strings
- * Return: 0 when program is successful or 1 on failure
- */
-int main(int argc, char *argv[])
-{
-	if (argc > 1)
-	{
-		/* If there are arguments provided, enters Non-interactive mode */
-		int k;
-		
-		for (k = 1; k < argc; k++)
-		{
-			runShellinstruction(argv[k]);
-		}
-	}	
-	else
-	{
-		while (1) /* using while loop to iterate the beginning process */
-		{
-			char instruction[MAX_INSTRUCTION_LENGTH];
-			showShellPrompt(); /* Displays the prompt */
-
-			if (fgets(instruction, MAX_INSTRUCTION_LENGTH, stdin) == NULL)
-			{
-				break; /* Exit if Ctrl+D is pressed */
-			}
-
-			instruction[strcspn(instruction, "\n")] = '\0'; /* Clear newlines */
-
-			if (strcmp(instruction, "exit") == 0)
-			{
-				break; /* Exit shell if the instruction is "exit" */
-			}
-			runShellinstruction(instruction); /* Execute instruction */
-		}
-	}
-
-	return (0);
 }
