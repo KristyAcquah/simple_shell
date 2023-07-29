@@ -39,6 +39,7 @@ void prompt(void)
 		free(line);
 		free(args);
 	}
+	while (status != -1);
 }
 
 /**
@@ -69,7 +70,7 @@ char **parse_line(char *line)
 	int r = 64, a = 0;
 	char *token, **tokens = malloc(r * sizeof(char *));
 
-	if (tokens == NULL)
+	if (!tokens)
 	{
 		fprintf(stderr, "error allocated\n");
 		exit(EXIT_FAILURE);
@@ -83,10 +84,10 @@ char **parse_line(char *line)
 
 		if (a >= r)
 		{
-			r = r * 2;
+			r = r + 64;
 			tokens = realloc(tokens, r * sizeof(char *));
 
-			if (tokens == NULL)
+			if (!tokens)
 			{
 				fprintf(stderr, "error allocated\n");
 				exit(EXIT_FAILURE);
