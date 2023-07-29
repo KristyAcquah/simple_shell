@@ -88,7 +88,7 @@ char **parse_line(char *line)
 			r = r * 64;
 			tokens = realloc(tokens, r * sizeof(char *));
 
-			if (tokens == 0)
+			if (tokens == NULL)
 			{
 				fprintf(stderr, "error allocated\n");
 				exit(EXIT_FAILURE);
