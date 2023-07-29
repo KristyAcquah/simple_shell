@@ -52,10 +52,8 @@ char *read_line(void)
 	char *line = NULL;
 	size_t r = 0;
 
-	if (getline(&line, &r, stdin) == -1)
-	{
-		return (NULL);
-	}
+	getline(&line, &r, stdin);
+
 	return (line);
 }
 
@@ -85,7 +83,7 @@ char **parse_line(char *line)
 
 		if (a >= r)
 		{
-			r = r * 64;
+			r = r * 2;
 			tokens = realloc(tokens, r * sizeof(char *));
 
 			if (tokens == NULL)
