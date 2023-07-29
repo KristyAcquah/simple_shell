@@ -12,8 +12,7 @@ void prompt(void)
 	pid_t pid;
 	int status = 1;
 
-	while (status)
-	{
+	do {
 		printf("cisfun$ ");
 		line = read_line();
 		args = parse_line(line);
@@ -38,7 +37,8 @@ void prompt(void)
 
 		free(line);
 		free(args);
-	}
+
+	} while (status != -1);
 }
 
 /**
