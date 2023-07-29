@@ -16,11 +16,8 @@ void prompt(void)
 	{
 		printf("cisfun$ ");
 		line = read_line();
-		if (line == NULL)
-		{
-			printf("\n");
-			exit(EXIT_SUCCESS);
-		}
+
+		exit(EXIT_SUCCESS);
 		args = parse_line(line);
 		pid = fork();
 
