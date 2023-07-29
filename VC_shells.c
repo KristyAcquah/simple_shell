@@ -16,6 +16,11 @@ void prompt(void)
 	{
 		printf("cisfun$ ");
 		line = read_line();
+		if (line == NULL)
+		{
+			printf("\n");
+			exit(EXIT_SUCCESS);
+		}
 		args = parse_line(line);
 		pid = fork();
 
@@ -52,8 +57,10 @@ char *read_line(void)
 	char *line = NULL;
 	size_t r = 0;
 
-	getline(&line, &r, stdin);
-
+	if (getline(&line, &r, stdin) == -1)
+	{
+		return (NULL);
+	}
 	return (line);
 }
 
