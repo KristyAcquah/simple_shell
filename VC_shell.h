@@ -1,7 +1,7 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef VC_SHELL_H
+#define VC_SHELL_H
 
-#define MAX_INSTRUCTION_ LENGTH(1024)
+#define MAX_INSTRUCTION_ LENGTH[1024]
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -23,4 +23,4 @@ char *read_line(void);
 
 char **parse_line(char *line);
 
-#endif
+#endif 
