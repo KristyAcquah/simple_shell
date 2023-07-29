@@ -10,9 +10,9 @@ void prompt(void)
 {
 	char *line, **args;
 	pid_t pid;
-	int status;
+	int status = 1;
 
-	while (!status)
+	while (status)
 	{
 		printf("cisfun$ ");
 		line = read_line();
@@ -69,13 +69,13 @@ char **parse_line(char *line)
 	int r = 64, a = 0;
 	char *token, **tokens = malloc(r * sizeof(char *));
 
-	if (tokens == 0)
+	if (tokens == NULL)
 	{
 		fprintf(stderr, "error allocated\n");
 		exit(EXIT_FAILURE);
 	}
 
-	token = strtok(line, "\n");
+	token = strtok(line, " \n");
 	while (token != NULL)
 	{
 		tokens[a] = token;
@@ -93,7 +93,7 @@ char **parse_line(char *line)
 			}
 
 		}
-		token = strtok(NULL, "\n");
+		token = strtok(NULL, " \n");
 	}
 
 	tokens[a] = NULL;

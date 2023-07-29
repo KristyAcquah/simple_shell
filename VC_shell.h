@@ -18,9 +18,8 @@
 #include <string.h>
 
 void prompt(void);
-
 char *read_line(void);
-
+void runShellInstruction(const char *instruction);
 char **parse_line(char *line);
 
-#endif 
+#endif /* VC_SHELL.H */
