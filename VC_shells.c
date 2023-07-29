@@ -39,7 +39,6 @@ void prompt(void)
 		free(line);
 		free(args);
 	}
-	while (status != -1);
 }
 
 /**
