@@ -1,4 +1,4 @@
-#include "main.h"
+#include "VC_shell.h"
 
 /**
  * prompt - function that displays for user to input
@@ -9,7 +9,7 @@
 void prompt(void)
 {
 	char *line, **args;
-	pid_ pid;
+	pid_t pid;
 	int status;
 
 	while (!status)
@@ -21,7 +21,7 @@ void prompt(void)
 
 		if (pid == 0)
 		{
-			if (execvp(arg[0], args) == -1)
+			if (execvp(args[0], args) == -1)
 			{
 				perror("Error");
 			}
@@ -39,7 +39,6 @@ void prompt(void)
 		free(line);
 		free(args);
 	}
-	return (!status);
 }
 
 /**
@@ -68,7 +67,7 @@ char *read_line(void)
 char **parse_line(char *line)
 {
 	int r = 64, a = 0;
-	char *token, **tokens = malloc(n * sizeof(char *));
+	char *token, **tokens = malloc(r * sizeof(char *));
 
 	if (tokens == 0)
 	{
